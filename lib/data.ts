@@ -23,6 +23,7 @@ export type Project = {
   stack: string[];
   description: string;
   links: ProjectLink[];
+  image?: string;
 };
 
 export const projects: Project[] = [
@@ -43,6 +44,7 @@ export const projects: Project[] = [
     description:
       "Job and task listing platform. Led all frontend development with React, integrated with a Node/Express backend and PostgreSQL.",
     links: [{ label: "View Source", href: "https://github.com/SnehaMdhr/Kaam-Daam" }],
+    image: "/kaamdaam.png",
   },
   {
     title: "LocalKart",
@@ -52,6 +54,7 @@ export const projects: Project[] = [
       { label: "View Source", href: "https://github.com/SnehaMdhr/LocalKart" },
       { label: "Figma Design", href: "https://www.figma.com/design/yP0tqvEKDtngiDlGehJ5vR/LocalKart?node-id=0-1&p=f&t=jU1WZcCDQlAL3QU5-0" },
     ],
+    image: "/localkart.png",
   },
   {
     title: "LinkIn",
@@ -59,6 +62,7 @@ export const projects: Project[] = [
     description:
       "A platform to store all your social media links in one place and share them publicly via a QR code or link.",
     links: [{ label: "View Source", href: "https://github.com/SnehaMdhr/LinkIn" }],
+    image: "/linkin.png",
   },
   {
     title: "GlamTok",
@@ -66,6 +70,7 @@ export const projects: Project[] = [
     description:
       "A data-driven analysis and prediction of social media post engagement, based on posting time, for local clothing businesses in Kathmandu Valley.",
     links: [{ label: "View Source", href: "https://github.com/SnehaMdhr/GlamTok" }],
+    image: "/glamtok.png",
   },
   {
     title: "Learn Mates",
@@ -83,9 +88,11 @@ export const projects: Project[] = [
 
 export const achievements: string[] = [
   "3rd Place - Code Crash Competition",
+  "Understanding Prompt Engineering - Data Camp",
   "Project Management (20-hour certification)",
   "Data Analyst in Python (36-hour certification)",
   "Data Analytics with Tableau",
+  "AWS Concepts - Data Camp",
   "Crime Investigation and Analysis",
   "MC Training Certificate",
 ];

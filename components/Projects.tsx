@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { projects } from "@/lib/data";
 import SectionHeading from "./SectionHeading";
 
@@ -87,7 +88,17 @@ export default function Projects() {
                       className="relative h-[200px] w-full overflow-hidden rounded-xl border border-accent/15 bg-panel/60 sm:h-[250px]"
                       style={{ boxShadow: "0 0 45px rgba(139, 92, 246, 0.20)" }}
                     >
-                      <ProjectScreenshot index={i} />
+                      {project.image ? (
+                        <Image
+                          src={project.image}
+                          alt={`${project.title} screenshot`}
+                          fill
+                          sizes="(max-width: 1024px) 100vw, 50vw"
+                          className="object-cover"
+                        />
+                      ) : (
+                        <ProjectScreenshot index={i} />
+                      )}
                     </div>
                   </div>
 
