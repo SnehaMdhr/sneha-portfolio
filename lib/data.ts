@@ -37,6 +37,7 @@ export const projects: Project[] = [
       { label: "Web Source Code", href: "https://github.com/SnehaMdhr/munch_nearby_Web" },
       { label: "Figma Design", href: "https://www.figma.com/design/m8ZFwNaheUdMPp9MWXc5vX/MunchNearby?node-id=0-1&p=f&t=vqZWw0VAyIDuiQfO-0" },
     ],
+    image: "/munchnearby.png",
   },
   {
     title: "Kaam Daam",
@@ -77,12 +78,14 @@ export const projects: Project[] = [
     stack: ["Kotlin", "Android", "Firebase"],
     description: "A mobile learning companion app built natively for Android using Kotlin.",
     links: [{ label: "View Source", href: "https://github.com/apala-1/LearnMates" }],
+    image: "/learnmates.png",
   },
   {
     title: "Event Management System",
     stack: ["Python", "Tkinter"],
     description: "A desktop GUI application for creating and managing events, with persistent storage.",
     links: [{ label: "View Source", href: "https://github.com/SnehaMdhr/event_management_system" }],
+    image: "/event.png",
   },
 ];
 
@@ -105,7 +108,7 @@ export type EducationItem = {
 
 export const education: EducationItem[] = [
   {
-    date: "2023 - 2026 (result awaited)",
+    date: "2023 - 2026",
     degree: "BSc (Hons) in Computing",
     institution: "Softwarica College of IT and E-commerce, in affiliation with Coventry University",
   },
