@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const links = [
   { href: "#about", label: "About" },
@@ -11,8 +11,34 @@ const links = [
   { href: "#contact", label: "Contact" },
 ];
 
+// Sections tracked by the scroll spy ("home" is tracked so no link stays
+// highlighted while the visitor is still at the top of the page)
+const spyIds = ["home", ...links.map((link) => link.href.slice(1))];
+
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const [activeId, setActiveId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const sections = spyIds
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveId(entry.target.id);
+          }
+        }
+      },
+      // Narrow band around the middle of the viewport decides the active section
+      { rootMargin: "-35% 0px -55% 0px", threshold: 0 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="fixed top-4 left-0 right-0 z-50 flex justify-center px-4 max-[639px]:hidden sm:top-5">
@@ -22,15 +48,26 @@ export default function Nav() {
 
         {/* Desktop links */}
         <div className="hidden items-center gap-7 sm:flex">
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="whitespace-nowrap font-sans text-[15px] font-medium text-ink-muted transition-colors duration-200 hover:text-accent-neon"
-            >
-              {link.label}
-            </a>
-          ))}
+          {links.map((link) => {
+            const isActive = activeId === link.href.slice(1);
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                aria-current={isActive ? "true" : undefined}
+                className={`relative whitespace-nowrap font-sans text-[15px] font-medium transition-colors duration-200 ${
+                  isActive ? "text-accent-neon" : "text-ink-muted hover:text-accent-neon"
+                }`}
+              >
+                {link.label}
+                <span
+                  className={`absolute -bottom-1.5 left-0 h-px w-full bg-gradient-to-r from-accent-neon/80 via-accent-neon/40 to-transparent transition-opacity duration-300 ${
+                    isActive ? "opacity-100" : "opacity-0"
+                  }`}
+                />
+              </a>
+            );
+          })}
         </div>
 
         {/* Mobile bar */}
@@ -58,16 +95,24 @@ export default function Nav() {
         {/* Mobile dropdown */}
         {open && (
           <div className="absolute top-full left-0 right-0 mt-2 flex flex-col gap-1 rounded-2xl border border-line bg-[#12081F]/95 p-3 backdrop-blur-xl sm:hidden">
-            {links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="rounded-lg px-4 py-2.5 font-sans text-[14px] font-medium text-ink-muted transition-colors duration-200 hover:bg-accent/10 hover:text-accent-neon"
-              >
-                {link.label}
-              </a>
-            ))}
+            {links.map((link) => {
+              const isActive = activeId === link.href.slice(1);
+              return (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  aria-current={isActive ? "true" : undefined}
+                  className={`rounded-lg px-4 py-2.5 font-sans text-[14px] font-medium transition-colors duration-200 ${
+                    isActive
+                      ? "bg-accent/15 text-accent-neon"
+                      : "text-ink-muted hover:bg-accent/10 hover:text-accent-neon"
+                  }`}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
           </div>
         )}
       </nav>

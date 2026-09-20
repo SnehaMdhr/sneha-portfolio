@@ -19,14 +19,15 @@ export default function Hero() {
             <img
               src="/IMG-20260207-WA0062.jpg"
               alt="Sneha Manandhar"
-              className="h-full w-full object-cover scale-[1.9] translate-y-[20%]"
+              draggable={false}
+              className="pointer-events-none h-full w-full object-cover scale-[1.9] translate-y-[20%]"
             />
           </div>
 
         </div>
 
         {/* Greeting */}
-        <p className="mb-3 font-sans text-sm text-ink-muted animate-rise" style={{ animationDelay: "0.1s" }}>
+        <p className="mb-4 font-sans text-lg sm:text-xl font-medium text-ink-muted animate-rise" style={{ animationDelay: "0.1s" }}>
           Hello, I&apos;m <span className="text-accent-neon">Sneha</span>
         </p>
 
