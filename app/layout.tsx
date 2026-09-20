@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
-import "./globals.css";
 
 const mono = JetBrains_Mono({
   subsets: ["latin"],
@@ -15,9 +14,9 @@ const sans = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Sneha Manandhar | Flutter & Full Stack Developer",
+  title: "Sneha Manandhar | Full Stack Developer & Flutter Developer",
   description:
-    "Portfolio of Sneha Manandhar, a Flutter Developer and Full Stack Developer building across the MERN stack and mobile.",
+    "Portfolio of Sneha Manandhar, a Full Stack Developer and Flutter Developer building across the MERN stack and mobile.",
 };
 
 export default function RootLayout({
