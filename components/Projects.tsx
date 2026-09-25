@@ -114,7 +114,7 @@ export default function Projects() {
                         </span>
                       ))}
                     </div>
-                    <p className="mb-6 text-[14.5px] leading-relaxed text-ink-muted">
+                    <p className="mb-6 text-justify text-[14.5px] leading-relaxed text-ink-muted">
                       {project.description}
                     </p>
                     <div className="flex flex-wrap gap-3">

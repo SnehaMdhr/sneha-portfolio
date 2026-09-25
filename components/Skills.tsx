@@ -1,6 +1,6 @@
 "use client";
 
-import { skillCategories } from "@/lib/data";
+import { skillCategories, type SkillCategory } from "@/lib/data";
 import SectionHeading from "./SectionHeading";
 
 const techIcons: Record<string, string> = {
@@ -8,6 +8,8 @@ const techIcons: Record<string, string> = {
   Dart: "https://cdn.simpleicons.org/dart/0175C2",
   JavaScript: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
   Python: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg",
+  Pandas: "https://cdn.simpleicons.org/pandas/FFFFFF",
+  NumPy: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/numpy/numpy-original.svg",
   Kotlin: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg",
   Java: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg",
   "Next.js": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
@@ -42,6 +44,32 @@ function ConceptIcon({ name }: { name: string }) {
         <ellipse cx="12" cy="5" rx="9" ry="3" />
         <path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5" />
         <path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3" />
+      </svg>
+    );
+  }
+  if (name === "XGBoost") {
+    return (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A855F7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 17l6-6 4 4 8-8" />
+        <path d="M21 3v6h-6" />
+      </svg>
+    );
+  }
+  if (name === "Data Analysis") {
+    return (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A855F7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M4 20V10" />
+        <path d="M10 20V4" />
+        <path d="M16 20v-7" />
+        <path d="M22 20H2" />
+      </svg>
+    );
+  }
+  if (name === "Data Visualization") {
+    return (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A855F7" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 3v9l6.5 4" />
       </svg>
     );
   }
@@ -110,6 +138,37 @@ function SkillPill({ name }: { name: string }) {
   );
 }
 
+function SkillCard({ category }: { category: SkillCategory }) {
+  const isConcepts = category.name === "Concepts";
+
+  return (
+    <div
+      className={`group relative overflow-hidden rounded-2xl border border-accent/15 bg-[#160A26]/80 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent-neon/40 hover:shadow-[0_0_30px_rgba(139,92,246,0.12)] ${isConcepts ? "col-span-full py-4 px-6" : "col-span-1 p-5"}`}
+    >
+      {/* Subtle gradient highlight on hover */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-accent/[0.04] via-transparent to-accent-neon/[0.02] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+      {/* Content */}
+      <div className={`relative ${isConcepts ? "flex flex-wrap items-center gap-4" : ""}`}>
+        {/* Category heading */}
+        <div className={`flex items-center gap-2 ${isConcepts ? "" : "mb-3"}`}>
+          <span className="text-accent-bright text-[11px]">✦</span>
+          <h3 className="font-sans text-[13px] font-bold tracking-wide text-accent-neon uppercase">
+            {category.name}
+          </h3>
+        </div>
+
+        {/* Skills */}
+        <div className={`flex flex-wrap gap-2 ${isConcepts ? "flex-1" : ""}`}>
+          {category.items.map((item) => (
+            <SkillPill key={item} name={item} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Skills() {
   return (
     <section id="skills" className="relative py-5">
@@ -129,35 +188,21 @@ export default function Skills() {
         {/* Bento grid */}
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {skillCategories.map((category) => {
-            const isConcepts = category.name === "Concepts";
+            /* Tools sits as its own card directly below Backend */
+            if (category.name === "Tools") return null;
 
-            return (
-              <div
-                key={category.name}
-                className={`group relative overflow-hidden rounded-2xl border border-accent/15 bg-[#160A26]/80 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent-neon/40 hover:shadow-[0_0_30px_rgba(139,92,246,0.12)] ${isConcepts ? "col-span-full py-4 px-6" : "col-span-1 p-5"}`}
-              >
-                {/* Subtle gradient highlight on hover */}
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-accent/[0.04] via-transparent to-accent-neon/[0.02] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            if (category.name === "Backend") {
+              const tools = skillCategories.find((c) => c.name === "Tools");
 
-                {/* Content */}
-                <div className={`relative ${isConcepts ? "flex flex-wrap items-center gap-4" : ""}`}>
-                  {/* Category heading */}
-                  <div className={`flex items-center gap-2 ${isConcepts ? "" : "mb-3"}`}>
-                    <span className="text-accent-bright text-[11px]">✦</span>
-                    <h3 className="font-sans text-[13px] font-bold tracking-wide text-accent-neon uppercase">
-                      {category.name}
-                    </h3>
-                  </div>
-
-                  {/* Skills */}
-                  <div className={`flex flex-wrap gap-2 ${isConcepts ? "flex-1" : ""}`}>
-                    {category.items.map((item) => (
-                      <SkillPill key={item} name={item} />
-                    ))}
-                  </div>
+              return (
+                <div key="backend-tools" className="flex flex-col gap-3">
+                  <SkillCard category={category} />
+                  {tools ? <SkillCard category={tools} /> : null}
                 </div>
-              </div>
-            );
+              );
+            }
+
+            return <SkillCard key={category.name} category={category} />;
           })}
         </div>
       </div>

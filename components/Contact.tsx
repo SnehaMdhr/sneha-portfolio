@@ -60,7 +60,6 @@ export default function Contact() {
               I&apos;d love to hear about it. You can reach me at
             </p>
 
-            {/* Email — prominent, static, not clickable */}
             <div className="mt-3 flex items-center gap-2.5">
               <span className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-accent/20 bg-accent/[0.08] text-accent-neon">
                 <MailIcon size={16} />
@@ -70,7 +69,6 @@ export default function Contact() {
               </span>
             </div>
 
-            {/* Social buttons — under the email */}
             <div className="mt-7 flex flex-wrap items-center gap-3">
               <a
                 href={socials.github}
