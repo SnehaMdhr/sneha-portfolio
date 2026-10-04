@@ -39,7 +39,7 @@ export default function Hero() {
               backgroundImage: "linear-gradient(90deg, #F5F0FF 0%, #A855F7 50%, #7C3AED 100%)",
             }}
           >
-            I am software developer
+            I am a software developer
           </span>
         </h1>
 

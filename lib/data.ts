@@ -3,6 +3,26 @@ export type SkillCategory = {
   items: string[];
 };
 
+export const experience = [
+  {
+    role: "Assistant Counsellor and Social Media Manager",
+    company: "Pranjal Education Consultancy Pvt Ltd",
+    period: "05/2023 - Present",
+    points: [
+      "Manage the company's social media accounts: schedule posts and respond to enquiries.",
+      "Assist the counsellor and help students with course selection and documentation.",
+    ],
+  },
+  {
+    role: "Receptionist",
+    company: "Animex Animation Academy",
+    period: "03/2022 - 12/2022",
+    points: [
+      "Handled front-desk operations, walk-in enquiries, call routing, and record management.",
+      "Built positive client relationships through consistent phone and in-person communication.",
+    ],
+  },
+];
 export const skillCategories: SkillCategory[] = [
   { name: "Mobile", items: ["Flutter", "Dart"] },
   { name: "Languages", items: ["JavaScript", "Python", "Kotlin", "Java"] },
@@ -83,7 +103,7 @@ export const projects: Project[] = [
   {
     title: "Learn Mates",
     stack: ["Kotlin", "Android", "Firebase"],
-    description: "Learn Mates is a mobile learning companion application developed natively for Android using Kotlin. The project gave me practical experience with native Android development and building a mobile application using Kotlin. Firebase was also used as part of the technology stack, allowing me to gain experience working with a backend service within an Android application.",
+    description: "Learn Mates is a mobile learning companion application developed natively for Android using Kotlin. The project was a group project that gave me practical experience with native Android development and building a mobile application using Kotlin. Firebase was also used as part of the technology stack, allowing me to gain experience working with a backend service within an Android application. It also taught me about Agile Framework and how to work in a team environment to deliver a functional application.",
     links: [{ label: "View Source", href: "https://github.com/apala-1/LearnMates" }],
     image: "/learnmates.png",
   },
