@@ -15,7 +15,7 @@ export const experience = [
   },
   {
     role: "Receptionist",
-    company: "Animex Animation Academy",
+    company: "Animax Animation Academy",
     period: "03/2022 - 12/2022",
     points: [
       "Handled front-desk operations, walk-in enquiries, call routing, and record management.",
