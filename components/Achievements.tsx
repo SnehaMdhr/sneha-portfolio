@@ -5,7 +5,7 @@ export default function Achievements() {
   return (
     <section id="achievements" className="relative py-10">
       <div className="relative">
-        <SectionHeading title="Achievements" label="🏆 Recognition" tone="coral" />
+        <SectionHeading title="Achievements" label="Recognition" tone="coral" />
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           {achievements.map((item) => (
             <div

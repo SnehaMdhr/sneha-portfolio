@@ -33,15 +33,15 @@ const tones = {
   mint: { box: "bg-[#6ffbbe]", pill: "bg-[#6ffbbe]/45 text-[#005236]" },
 };
 
-const categoryStyle: Record<string, { icon: string; tone: keyof typeof tones }> = {
-  Mobile: { icon: "📱", tone: "lavender" },
-  Languages: { icon: "💬", tone: "coral" },
-  Frontend: { icon: "🎨", tone: "mint" },
-  Backend: { icon: "⚡", tone: "lavender" },
-  Tools: { icon: "✨", tone: "coral" },
-  Database: { icon: "🗄️", tone: "mint" },
-  "Data & Analytics": { icon: "📈", tone: "lavender" },
-  Concepts: { icon: "🧩", tone: "coral" },
+const categoryStyle: Record<string, { tone: keyof typeof tones }> = {
+  Mobile: {  tone: "lavender" },
+  Languages: { tone: "coral" },
+  Frontend: { tone: "mint" },
+  Backend: { tone: "lavender" },
+  Tools: { tone: "coral" },
+  Database: { tone: "mint" },
+  "Data & Analytics": { tone: "lavender" },
+  Concepts: { tone: "coral" },
 };
 
 /* Concept icons as inline SVGs */
@@ -163,9 +163,7 @@ function SkillCard({ category }: { category: SkillCategory }) {
   return (
     <div className="flex flex-col gap-4 rounded-3xl border border-line-soft bg-card p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover">
       <div className="flex items-center gap-3">
-        <span className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-2xl text-[18px] ${tone.box}`}>
-          {style.icon}
-        </span>
+  
         <h3 className="font-sans text-[17px] font-semibold tracking-tight text-ink">{category.name}</h3>
       </div>
 
@@ -182,7 +180,7 @@ export default function Skills() {
   return (
     <section id="skills" className="relative py-10">
       <div className="relative">
-        <SectionHeading title="Technical Skills" label="🛠️ What I use" tone="mint" />
+        <SectionHeading title="Technical Skills" label="What I use" tone="mint" />
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {skillCategories.map((category) => (

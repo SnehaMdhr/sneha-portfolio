@@ -121,7 +121,7 @@ export default function Projects() {
   return (
     <section id="projects" className="relative py-10">
       <div className="relative">
-        <SectionHeading title="Projects" label="🚀 Things I built" />
+        <SectionHeading title="Projects" label="Things I built" />
 
         <div className="space-y-8">
           {projects.map((project, i) => {

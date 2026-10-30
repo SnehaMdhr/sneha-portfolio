@@ -5,7 +5,7 @@ export default function Education() {
   return (
     <section id="education" className="relative py-10">
       <div className="relative">
-        <SectionHeading title="Education" label="🎓 Where I studied" tone="mint" />
+        <SectionHeading title="Education" label="Where I studied" tone="mint" />
         <div className="space-y-4">
           {education.map((item) => (
             <article

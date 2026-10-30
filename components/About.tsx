@@ -5,7 +5,7 @@ export default function About() {
     <section id="about" className="relative py-10">
       <div className="pointer-events-none absolute inset-0 radial-glow" />
       <div className="relative">
-        <SectionHeading title="About" label="💡 Who I am" tone="coral" />
+        <SectionHeading title="About" label="Who I am" tone="coral" />
         <div className="rounded-3xl border border-line-soft bg-card p-7 shadow-card sm:p-9">
           <div className="space-y-4 text-left text-[15.5px] leading-relaxed text-ink-muted">
             <p>

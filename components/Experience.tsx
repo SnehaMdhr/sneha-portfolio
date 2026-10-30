@@ -5,7 +5,7 @@ export default function Experience() {
   return (
     <section id="experience" className="relative py-10">
       <div className="relative">
-        <SectionHeading title="Work Experience" label="💼 Where I've worked" tone="lavender" />
+        <SectionHeading title="Work Experience" label="Where I've worked" tone="lavender" />
         <div className="space-y-4">
           {experience.map((item) => (
             <article

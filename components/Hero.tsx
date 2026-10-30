@@ -64,18 +64,12 @@ export default function Hero() {
             backend logic. Comfortable with client communication and agile workflows.
           </p>
 
-          <div className="flex flex-wrap items-center gap-3 pt-1 animate-rise" style={{ animationDelay: "0.4s" }}>
+          <div className="flex flex-wrap items-center mt-0 gap-3 pt-1 animate-rise" style={{ animationDelay: "0.4s" }}>
             <a
               href="#projects"
               className="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 font-sans text-[14px] font-semibold text-surface shadow-pop transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent-dim"
             >
-              See my work <span>✨</span>
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 rounded-full border border-line-soft bg-card px-6 py-3 font-sans text-[14px] font-semibold text-accent shadow-card transition-all duration-200 hover:-translate-y-0.5 hover:shadow-card-hover"
-            >
-              Get in touch <span>💬</span>
+              See my work
             </a>
             <a
               href={socials.github}
@@ -127,7 +121,7 @@ export default function Hero() {
       </div>
 
       {/* Fact cards */}
-      <div className="relative z-10 mt-12 grid grid-cols-2 gap-4 lg:grid-cols-4">
+      <div className="relative z-10 mt-4 grid grid-cols-2 gap-4 lg:grid-cols-4">
         {facts.map((f) => (
           <div
             key={f.title}
