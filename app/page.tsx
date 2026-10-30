@@ -11,7 +11,7 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-base grid-pattern">
+    <div className="min-h-screen">
       <Nav />
       <main className="mx-auto max-w-[1100px] px-7">
         <Hero />

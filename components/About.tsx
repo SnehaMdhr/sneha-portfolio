@@ -1,17 +1,15 @@
 import SectionHeading from "./SectionHeading";
 
-
-
 export default function About() {
   return (
-    <section id="about" className="relative py-5">
+    <section id="about" className="relative py-10">
       <div className="pointer-events-none absolute inset-0 radial-glow" />
       <div className="relative">
-        <SectionHeading title="About" />
-        <div className="rounded-2xl border border-line bg-card/60 p-7 backdrop-blur-sm">
-          <div className="space-y-4 text-justify text-[15.5px] leading-relaxed text-ink-muted">
+        <SectionHeading title="About" label="💡 Who I am" tone="coral" />
+        <div className="rounded-3xl border border-line-soft bg-card p-7 shadow-card sm:p-9">
+          <div className="space-y-4 text-left text-[15.5px] leading-relaxed text-ink-muted">
             <p>
-              I&apos;m a <span className="text-ink">Full Stack and Flutter Developer</span> with
+              I&apos;m a <span className="font-semibold text-ink">Full Stack and Flutter Developer</span> with
               hands-on experience building web and mobile applications using modern technologies
               across the MERN stack and Flutter. I recently completed my BSc (Hons) in Computing
               at Softwarica College of IT and E-commerce, in affiliation with Coventry University,
@@ -27,7 +25,7 @@ export default function About() {
 
             <p>
               Alongside software development, I also have a foundation in Python and data
-              analysis. My <span className="text-ink">GlamTok</span> project focuses on analyzing
+              analysis. My <span className="font-semibold text-ink">GlamTok</span> project focuses on analyzing
               and predicting social media post engagement based on posting time for local clothing
               businesses in Kathmandu Valley, using Python, Pandas, NumPy, and XGBoost. That
               experience gave me an interest in using data to understand patterns and support

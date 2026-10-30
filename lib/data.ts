@@ -173,25 +173,25 @@ export const experienceCards: ExperienceCard[] = [
   {
     title: "Softwarica College",
     role: "BSc Computing Student",
-    iconBg: "#7C3AED",
+    iconBg: "#4648d4",
     iconEmoji: "🎓",
   },
   {
     title: "Flutter Developer",
     role: "Mobile & Web Apps",
-    iconBg: "#A855F7",
+    iconBg: "#4648d4",
     iconEmoji: "📱",
   },
   {
     title: "Full Stack Developer",
     role: "MERN Stack Projects",
-    iconBg: "#6D28D9",
+    iconBg: "#4648d4",
     iconEmoji: "💻",
   },
   {
     title: "Freelance Developer",
     role: "Client Projects",
-    iconBg: "#8B5CF6",
+    iconBg: "#4648d4",
     iconEmoji: "🚀",
   },
 ];
