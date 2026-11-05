@@ -101,6 +101,19 @@ export const projects: Project[] = [
     image: "/glamtok.png",
   },
   {
+  title: "Sales Insights Dashboard",
+  stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Recharts", "PapaParse"],
+  description:
+    "Sales Insights is a data cleaning and analytics dashboard where users upload a sales CSV, fix messy data, and explore revenue trends. I built it end to end: a validation and cleaning engine (duplicate detection, missing value handling, IQR outlier detection, undo and reset), a data quality report, and an interactive dashboard with KPIs, charts, filters, and CSV export. The cleaning logic is written as pure, reusable TypeScript functions, and all processing happens in the browser so user data never leaves their device. Through this project, I strengthened my skills in TypeScript, React state management, data validation, and designing a clean, user-friendly interface.",
+  links: [
+    {
+      label: "View Source",
+      href: "https://github.com/SnehaMdhr/data-detective",
+    },
+  ],
+  image: "/sales.png",
+},
+  {
     title: "Learn Mates",
     stack: ["Kotlin", "Android", "Firebase"],
     description: "Learn Mates is a mobile learning companion application developed natively for Android using Kotlin. The project was a group project that gave me practical experience with native Android development and building a mobile application using Kotlin. Firebase was also used as part of the technology stack, allowing me to gain experience working with a backend service within an Android application. It also taught me about Agile Framework and how to work in a team environment to deliver a functional application.",
