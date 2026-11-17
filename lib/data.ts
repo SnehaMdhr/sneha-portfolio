@@ -33,7 +33,7 @@ export const skillCategories: SkillCategory[] = [
     name: "Data & Analytics",
     items: ["Python", "Pandas", "NumPy", "XGBoost", "Data Analysis", "Data Visualization"],
   },
-  { name: "Tools", items: ["Git", "GitHub", "Figma", "Canva"] },
+  { name: "Tools", items: ["Git", "GitHub", "Figma", "Canva","Postman"] },
   { name: "Concepts", items: ["OOP", "CRUD", "REST APIs"] },
 ];
 

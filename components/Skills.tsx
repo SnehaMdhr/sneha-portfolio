@@ -24,6 +24,8 @@ const techIcons: Record<string, string> = {
   GitHub: "__inline__",
   Figma: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg",
   Canva: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/canva/canva-original.svg",
+  Postman: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg"
+  ,
 };
 
 /* Card look per category: icon, icon-box color, pill color */
