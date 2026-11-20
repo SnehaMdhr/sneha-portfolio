@@ -113,46 +113,46 @@ export const projects: Project[] = [
   ],
   image: "/sales.png",
 },
-  {
-    title: "Learn Mates",
-    stack: ["Kotlin", "Android", "Firebase"],
-    description: "Learn Mates is a mobile learning companion application developed natively for Android using Kotlin. The project was a group project that gave me practical experience with native Android development and building a mobile application using Kotlin. Firebase was also used as part of the technology stack, allowing me to gain experience working with a backend service within an Android application. It also taught me about Agile Framework and how to work in a team environment to deliver a functional application.",
-    links: [{ label: "View Source", href: "https://github.com/apala-1/LearnMates" }],
-    image: "/learnmates.png",
-  },
-  {
-    title: "Event Management System",
-    stack: ["Python", "Tkinter"],
-    description: "The Event Management System is a desktop GUI application designed for creating and managing events with persistent storage. I developed the application using Python and Tkinter, gaining experience in building desktop interfaces and implementing application functionality around event management. The project also provided practical experience in working with persistent data within a desktop application.",
-    links: [{ label: "View Source", href: "https://github.com/SnehaMdhr/event_management_system" }],
-    image: "/event.png",
-  },
-  {
-  title: "Daily Expense Tracker",
-  stack: ["Kotlin", "Android", "Android Studio"],
-  description:
-    "Daily Expense Tracker is a native Android application developed to help users record, organize, and monitor their daily expenses. The application allows users to keep track of their spending and manage their personal expenses in one place. I developed this project using Kotlin, gaining practical experience in native Android development, designing mobile interfaces, and implementing application functionality.",
-  links: [
-    {
-      label: "View Source",
-      href: "https://github.com/SnehaMdhr/Android_Application_Development_Final_Project",
-    },
-  ],
-  image: "/expense.png",
-},
-{
-  title: "Punctuality Management System",
-  stack: ["Java", "Java Swing", "Backend Development"],
-  description:
-    "Punctuality Management System is a group project developed to manage and monitor punctuality-related activities. I worked as the Backend Developer, contributing to the application's backend functionality and data handling. Through this project, I gained practical experience in Java programming, implementing application logic, and collaborating with team members to develop a functional software solution.",
-  links: [
-    {
-      label: "View Source",
-      href: "https://github.com/SnehaMdhr/Punctuality_Management_System",
-    },
-  ],
-  image: "/punctuality.png",
-},
+  // {
+  //   title: "Learn Mates",
+  //   stack: ["Kotlin", "Android", "Firebase"],
+  //   description: "Learn Mates is a mobile learning companion application developed natively for Android using Kotlin. The project was a group project that gave me practical experience with native Android development and building a mobile application using Kotlin. Firebase was also used as part of the technology stack, allowing me to gain experience working with a backend service within an Android application. It also taught me about Agile Framework and how to work in a team environment to deliver a functional application.",
+  //   links: [{ label: "View Source", href: "https://github.com/apala-1/LearnMates" }],
+  //   image: "/learnmates.png",
+  // },
+//   {
+//     title: "Event Management System",
+//     stack: ["Python", "Tkinter"],
+//     description: "The Event Management System is a desktop GUI application designed for creating and managing events with persistent storage. I developed the application using Python and Tkinter, gaining experience in building desktop interfaces and implementing application functionality around event management. The project also provided practical experience in working with persistent data within a desktop application.",
+//     links: [{ label: "View Source", href: "https://github.com/SnehaMdhr/event_management_system" }],
+//     image: "/event.png",
+//   },
+//   {
+//   title: "Daily Expense Tracker",
+//   stack: ["Kotlin", "Android", "Android Studio"],
+//   description:
+//     "Daily Expense Tracker is a native Android application developed to help users record, organize, and monitor their daily expenses. The application allows users to keep track of their spending and manage their personal expenses in one place. I developed this project using Kotlin, gaining practical experience in native Android development, designing mobile interfaces, and implementing application functionality.",
+//   links: [
+//     {
+//       label: "View Source",
+//       href: "https://github.com/SnehaMdhr/Android_Application_Development_Final_Project",
+//     },
+//   ],
+//   image: "/expense.png",
+// },
+// {
+//   title: "Punctuality Management System",
+//   stack: ["Java", "Java Swing", "Backend Development"],
+//   description:
+//     "Punctuality Management System is a group project developed to manage and monitor punctuality-related activities. I worked as the Backend Developer, contributing to the application's backend functionality and data handling. Through this project, I gained practical experience in Java programming, implementing application logic, and collaborating with team members to develop a functional software solution.",
+//   links: [
+//     {
+//       label: "View Source",
+//       href: "https://github.com/SnehaMdhr/Punctuality_Management_System",
+//     },
+//   ],
+//   image: "/punctuality.png",
+// },
 ];
 
 export const achievements: string[] = [
