@@ -33,7 +33,8 @@ export const skillCategories: SkillCategory[] = [
     name: "Data & Analytics",
     items: ["Python", "Pandas", "NumPy", "XGBoost", "Data Analysis", "Data Visualization"],
   },
-  { name: "Tools", items: ["Git", "GitHub", "Figma", "Canva","Postman"] },
+  { name: "UI/UX", items: ["Figma","Wireframing","Prototyping","UI Design","Responsive Design"] },
+  { name: "Tools", items: ["Git", "GitHub", "Canva","Postman"] },
   { name: "Concepts", items: ["OOP", "CRUD", "REST APIs"] },
 ];
 
@@ -63,14 +64,7 @@ export const projects: Project[] = [
     ],
     image: "/munchnearby.png",
   },
-  {
-    title: "Kaam Daam",
-    stack: ["React.js", "PERN"],
-    description:
-      "Kaam Daam is a job and task listing platform designed to connect users with available work and task opportunities. I led the frontend development of the project using React.js and worked on integrating the frontend with a Node.js and Express.js backend. The project also involved working with a PostgreSQL database, giving me practical experience with the PERN stack and with building frontend experiences that communicate with backend services.",
-    links: [{ label: "View Source", href: "https://github.com/SnehaMdhr/Kaam-Daam" }],
-    image: "/kaamdaam.png",
-  },
+ 
   {
     title: "LocalKart",
     stack: ["Flutter", "Dart"],
@@ -80,6 +74,14 @@ export const projects: Project[] = [
       { label: "Figma Design", href: "https://www.figma.com/design/yP0tqvEKDtngiDlGehJ5vR/LocalKart?node-id=0-1&p=f&t=jU1WZcCDQlAL3QU5-0" },
     ],
     image: "/localkart.png",
+  },
+    {
+    title: "GlamTok",
+    stack: ["Data analysis", "Prediction"],
+    description:
+      "GlamTok is a data-driven analysis and prediction project focused on understanding social media post engagement based on posting time for local clothing businesses in Kathmandu Valley. The project combines data analysis and machine learning to explore engagement patterns and build a prediction system. I worked with Python and data-analysis technologies including Pandas and NumPy, and used XGBoost as part of the predictive modelling work.",
+    links: [{ label: "View Source", href: "https://github.com/SnehaMdhr/GlamTok" }],
+    image: "/glamtok.png",
   },
   {
     title: "LinkIn",
@@ -92,13 +94,14 @@ export const projects: Project[] = [
     ],
     image: "/linkin.png",
   },
-  {
-    title: "GlamTok",
-    stack: ["Data analysis", "Prediction"],
+
+   {
+    title: "Kaam Daam",
+    stack: ["React.js", "PERN"],
     description:
-      "GlamTok is a data-driven analysis and prediction project focused on understanding social media post engagement based on posting time for local clothing businesses in Kathmandu Valley. The project combines data analysis and machine learning to explore engagement patterns and build a prediction system. I worked with Python and data-analysis technologies including Pandas and NumPy, and used XGBoost as part of the predictive modelling work.",
-    links: [{ label: "View Source", href: "https://github.com/SnehaMdhr/GlamTok" }],
-    image: "/glamtok.png",
+      "Kaam Daam is a job and task listing platform designed to connect users with available work and task opportunities. I led the frontend development of the project using React.js and worked on integrating the frontend with a Node.js and Express.js backend. The project also involved working with a PostgreSQL database, giving me practical experience with the PERN stack and with building frontend experiences that communicate with backend services.",
+    links: [{ label: "View Source", href: "https://github.com/SnehaMdhr/Kaam-Daam" }],
+    image: "/kaamdaam.png",
   },
   {
   title: "Sales Insights Dashboard",
@@ -113,46 +116,46 @@ export const projects: Project[] = [
   ],
   image: "/sales.png",
 },
-  // {
-  //   title: "Learn Mates",
-  //   stack: ["Kotlin", "Android", "Firebase"],
-  //   description: "Learn Mates is a mobile learning companion application developed natively for Android using Kotlin. The project was a group project that gave me practical experience with native Android development and building a mobile application using Kotlin. Firebase was also used as part of the technology stack, allowing me to gain experience working with a backend service within an Android application. It also taught me about Agile Framework and how to work in a team environment to deliver a functional application.",
-  //   links: [{ label: "View Source", href: "https://github.com/apala-1/LearnMates" }],
-  //   image: "/learnmates.png",
-  // },
-//   {
-//     title: "Event Management System",
-//     stack: ["Python", "Tkinter"],
-//     description: "The Event Management System is a desktop GUI application designed for creating and managing events with persistent storage. I developed the application using Python and Tkinter, gaining experience in building desktop interfaces and implementing application functionality around event management. The project also provided practical experience in working with persistent data within a desktop application.",
-//     links: [{ label: "View Source", href: "https://github.com/SnehaMdhr/event_management_system" }],
-//     image: "/event.png",
-//   },
-//   {
-//   title: "Daily Expense Tracker",
-//   stack: ["Kotlin", "Android", "Android Studio"],
-//   description:
-//     "Daily Expense Tracker is a native Android application developed to help users record, organize, and monitor their daily expenses. The application allows users to keep track of their spending and manage their personal expenses in one place. I developed this project using Kotlin, gaining practical experience in native Android development, designing mobile interfaces, and implementing application functionality.",
-//   links: [
-//     {
-//       label: "View Source",
-//       href: "https://github.com/SnehaMdhr/Android_Application_Development_Final_Project",
-//     },
-//   ],
-//   image: "/expense.png",
-// },
-// {
-//   title: "Punctuality Management System",
-//   stack: ["Java", "Java Swing", "Backend Development"],
-//   description:
-//     "Punctuality Management System is a group project developed to manage and monitor punctuality-related activities. I worked as the Backend Developer, contributing to the application's backend functionality and data handling. Through this project, I gained practical experience in Java programming, implementing application logic, and collaborating with team members to develop a functional software solution.",
-//   links: [
-//     {
-//       label: "View Source",
-//       href: "https://github.com/SnehaMdhr/Punctuality_Management_System",
-//     },
-//   ],
-//   image: "/punctuality.png",
-// },
+  {
+    title: "Learn Mates",
+    stack: ["Kotlin", "Android", "Firebase"],
+    description: "Learn Mates is a mobile learning companion application developed natively for Android using Kotlin. The project was a group project that gave me practical experience with native Android development and building a mobile application using Kotlin. Firebase was also used as part of the technology stack, allowing me to gain experience working with a backend service within an Android application. It also taught me about Agile Framework and how to work in a team environment to deliver a functional application.",
+    links: [{ label: "View Source", href: "https://github.com/apala-1/LearnMates" }],
+    image: "/learnmates.png",
+  },
+  {
+    title: "Event Management System",
+    stack: ["Python", "Tkinter"],
+    description: "The Event Management System is a desktop GUI application designed for creating and managing events with persistent storage. I developed the application using Python and Tkinter, gaining experience in building desktop interfaces and implementing application functionality around event management. The project also provided practical experience in working with persistent data within a desktop application.",
+    links: [{ label: "View Source", href: "https://github.com/SnehaMdhr/event_management_system" }],
+    image: "/event.png",
+  },
+  {
+  title: "Daily Expense Tracker",
+  stack: ["Kotlin", "Android", "Android Studio"],
+  description:
+    "Daily Expense Tracker is a native Android application developed to help users record, organize, and monitor their daily expenses. The application allows users to keep track of their spending and manage their personal expenses in one place. I developed this project using Kotlin, gaining practical experience in native Android development, designing mobile interfaces, and implementing application functionality.",
+  links: [
+    {
+      label: "View Source",
+      href: "https://github.com/SnehaMdhr/Android_Application_Development_Final_Project",
+    },
+  ],
+  image: "/expense.png",
+},
+{
+  title: "Punctuality Management System",
+  stack: ["Java", "Java Swing", "Backend Development"],
+  description:
+    "Punctuality Management System is a group project developed to manage and monitor punctuality-related activities. I worked as the Backend Developer, contributing to the application's backend functionality and data handling. Through this project, I gained practical experience in Java programming, implementing application logic, and collaborating with team members to develop a functional software solution.",
+  links: [
+    {
+      label: "View Source",
+      href: "https://github.com/SnehaMdhr/Punctuality_Management_System",
+    },
+  ],
+  image: "/punctuality.png",
+},
 ];
 
 export const achievements: string[] = [

@@ -14,7 +14,7 @@ export default function About() {
               across the MERN stack and Flutter. I recently completed my BSc (Hons) in Computing
               at Softwarica College of IT and E-commerce, in affiliation with Coventry University,
               where I developed projects covering frontend development, backend APIs, databases,
-              mobile applications, and software development.
+              mobile applications, and software development. 
             </p>
 
             <p>
@@ -31,6 +31,7 @@ export default function About() {
               experience gave me an interest in using data to understand patterns and support
               better decisions alongside building practical software solutions.
             </p>
+            <p>I am also interested in UI/UX design, particularly understanding user needs and translating them into intuitive and visually consistent interfaces. I enjoy exploring how thoughtful layouts, typography, colors, and reusable components can improve the overall user experience.</p>
 
             <p>
               I&apos;m comfortable working independently, communicating with clients, and working

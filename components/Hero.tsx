@@ -38,15 +38,15 @@ export default function Hero() {
             <span className="font-sans text-[14px] font-bold text-ink">Hello, I&apos;m Sneha</span>
           </div>
 
-          <h1
-            className="font-sans text-[40px] font-extrabold leading-[1.08] tracking-[-0.03em] text-ink sm:text-[56px] lg:text-[64px] animate-rise"
-            style={{ animationDelay: "0.1s" }}
-          >
-            I am a{" "}
-            <span className="text-accent underline decoration-accent/60 decoration-wavy decoration-[3px] underline-offset-[6px]">
-              Software Developer
-            </span>
-          </h1>
+         <h1
+  className="font-sans text-[32px] font-extrabold leading-[1.4] tracking-[-0.03em] text-ink sm:text-[42px] lg:text-[48px] animate-rise"
+  style={{ animationDelay: "0.1s" }}
+>
+  I am a{" "}
+  <span className="text-accent underline decoration-accent/60 decoration-wavy decoration-[3px] underline-offset-[6px]">
+    Software Developer & UI/UX Enthusiast
+  </span>
+</h1>
 
           <p
             className="font-sans text-[19px] font-bold tracking-tight text-accent sm:text-[24px] animate-rise"
@@ -96,10 +96,10 @@ export default function Hero() {
             <div className="aspect-square w-full rounded-[2rem] bg-gradient-to-tr from-tint to-[#ffdad8] p-2 shadow-pop">
               <div className="relative h-full w-full overflow-hidden rounded-[1.5rem] bg-card">
                 <img
-  src="/IMG-20260207-WA0062.jpg"
+  src="photo.jpeg"
   alt="Sneha Manandhar"
   draggable={false}
-  className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[center_20%] scale-125"
+  className="pointer-events-none absolute inset-0 h-full w-full object-cover object-[center_80%] scale-125"
 />
                 <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between rounded-2xl bg-card/90 px-3 py-2.5 shadow-card backdrop-blur-md">
                   <div className="flex items-center gap-2">

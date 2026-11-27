@@ -24,8 +24,14 @@ const techIcons: Record<string, string> = {
   GitHub: "__inline__",
   Figma: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg",
   Canva: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/canva/canva-original.svg",
-  Postman: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg"
-  ,
+  Postman: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg",
+ Wireframing: "https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/pencil-ruler.svg",
+
+Prototyping: "https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/workflow.svg",
+
+"UI Design": "https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/layout-dashboard.svg",
+
+"Responsive Design": "https://cdn.jsdelivr.net/npm/lucide-static@latest/icons/monitor-smartphone.svg",
 };
 
 /* Card look per category: icon, icon-box color, pill color */
@@ -185,10 +191,25 @@ export default function Skills() {
         <SectionHeading title="Technical Skills" label="What I use" tone="mint" />
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {skillCategories.map((category) => (
-            <SkillCard key={category.name} category={category} />
-          ))}
+  {skillCategories.map((category) => {
+    if (category.name === "Concepts") return null;
+
+    if (category.name === "Tools") {
+      const concepts = skillCategories.find(
+        (item) => item.name === "Concepts"
+      );
+
+      return (
+        <div key="tools-concepts" className="flex flex-col gap-4">
+          <SkillCard category={category} />
+          {concepts && <SkillCard category={concepts} />}
         </div>
+      );
+    }
+
+    return <SkillCard key={category.name} category={category} />;
+  })}
+</div>
       </div>
     </section>
   );

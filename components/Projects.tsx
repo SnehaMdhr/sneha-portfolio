@@ -1,6 +1,14 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import { projects } from "@/lib/data";
 import SectionHeading from "./SectionHeading";
+
+/* How many projects get the big detailed card. The rest go under "View more". */
+const MAIN_COUNT = 4;
+
+type Project = (typeof projects)[number];
 
 /* ---------- Link icons ---------- */
 function GithubIcon() {
@@ -28,6 +36,25 @@ function LiveIcon() {
       <path d="M15 3h6v6" />
       <path d="M10 14 21 3" />
       <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+    </svg>
+  );
+}
+
+function ChevronIcon({ up }: { up: boolean }) {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className={`transition-transform duration-300 ${up ? "rotate-180" : ""}`}
+    >
+      <path d="m6 9 6 6 6-6" />
     </svg>
   );
 }
@@ -109,119 +136,209 @@ function ProjectScreenshot({ index }: { index: number }) {
   return layouts[index % layouts.length];
 }
 
+/* ---------- Big detailed card (main projects) ---------- */
+function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const isReversed = index % 2 === 1;
+  const isFeatured = index === 0;
+
+  // The screenshot opens the live demo if there is one, otherwise the first link
+  const liveLink = project.links.find((l) => linkKind(l.label) === "live");
+  const mainLink = liveLink ?? project.links[0];
+  const mainKind = mainLink ? linkKind(mainLink.label) : "code";
+  const tagText =
+    mainKind === "live" ? "Open live demo" : mainKind === "design" ? "View design" : "View source";
+
+  const frame = (
+    <div className="relative h-[200px] w-full overflow-hidden rounded-2xl border border-line-soft bg-soft shadow-pop sm:h-[250px]">
+      {project.image ? (
+        <Image
+          src={project.image}
+          alt={`${project.title} screenshot`}
+          fill
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          className="object-contain p-2 transition-transform duration-500 group-hover/shot:scale-[1.03]"
+        />
+      ) : (
+        <ProjectScreenshot index={index} />
+      )}
+      {mainLink && (
+        <span className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-card/95 px-3 py-1.5 font-sans text-[12px] font-semibold text-ink shadow-card transition-all duration-300 group-hover/shot:bg-accent group-hover/shot:text-surface">
+          <KindIcon kind={mainKind} />
+          {tagText} ↗
+        </span>
+      )}
+    </div>
+  );
+
+  return (
+    <article
+      className={`card-hover group relative overflow-hidden rounded-3xl border bg-card shadow-card ${
+        isFeatured ? "border-accent/40 shadow-pop ring-4 ring-tint" : "border-line-soft"
+      }`}
+    >
+      <div className={`relative flex flex-col ${isReversed ? "lg:flex-row-reverse" : "lg:flex-row"}`}>
+        {/* Screenshot (clickable) */}
+        <div className="relative flex items-center justify-center p-6 sm:p-8 lg:w-1/2">
+          {mainLink ? (
+            <a
+              href={mainLink.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${tagText}: ${project.title}`}
+              className="group/shot block w-full"
+            >
+              {frame}
+            </a>
+          ) : (
+            frame
+          )}
+        </div>
+
+        {/* Content */}
+        <div className="flex flex-col justify-center p-6 sm:p-8 lg:w-1/2">
+          {isFeatured && (
+            <span className="mb-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-[#ffdad8] px-3 py-1 font-sans text-[11px] font-bold uppercase tracking-wider text-[#8c1520]">
+              ⭐ Featured Project
+            </span>
+          )}
+          <h3 className="mb-3 font-sans text-2xl font-extrabold tracking-tight text-ink sm:text-[28px]">
+            {project.title}
+          </h3>
+          <div className="mb-4 flex flex-wrap gap-2">
+            {project.stack.map((tech) => (
+              <span key={tech} className="tag-pill">
+                {tech}
+              </span>
+            ))}
+          </div>
+          <p className="mb-6 text-left text-[14.5px] leading-relaxed text-ink-muted">
+            {project.description}
+          </p>
+          <div className="flex flex-wrap gap-3">
+            {project.links.map((link) => {
+              const kind = linkKind(link.label);
+              const isMain = link === mainLink;
+              return (
+                <a
+                  key={link.href + link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center gap-2 rounded-full px-4 py-2 font-sans text-[13px] font-semibold transition-all duration-300 hover:-translate-y-0.5 ${
+                    isMain
+                      ? "bg-accent text-surface shadow-card hover:shadow-card-hover"
+                      : "border border-line bg-card text-ink hover:border-accent hover:text-accent"
+                  }`}
+                >
+                  <KindIcon kind={kind} />
+                  {link.label} ↗
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+/* ---------- Small card (the "View more" grid) ---------- */
+function CompactCard({ project }: { project: Project }) {
+  return (
+    <article className="flex flex-col gap-3 rounded-3xl border border-line-soft bg-card p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-line hover:shadow-card-hover">
+      <h3 className="font-sans text-[18px] font-bold leading-tight tracking-tight text-ink">
+        {project.title}
+      </h3>
+
+      <div className="flex flex-wrap gap-1.5">
+        {project.stack.map((tech) => (
+          <span key={tech} className="tag-pill">
+            {tech}
+          </span>
+        ))}
+      </div>
+
+      <p className="line-clamp-3 text-[13.5px] leading-relaxed text-ink-muted">
+        {project.description}
+      </p>
+
+      <div className="mt-auto flex flex-wrap gap-2 pt-1">
+        {project.links.map((link) => {
+          const kind = linkKind(link.label);
+          return (
+            <a
+              key={link.href + link.label}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-full border border-line bg-card px-3 py-1.5 font-sans text-[12px] font-semibold text-ink transition-all duration-300 hover:-translate-y-0.5 hover:border-accent hover:text-accent"
+            >
+              <KindIcon kind={kind} />
+              {link.label} ↗
+            </a>
+          );
+        })}
+      </div>
+    </article>
+  );
+}
+
 export default function Projects() {
+  const [showMore, setShowMore] = useState(false);
+
+  const mainProjects = projects.slice(0, MAIN_COUNT);
+  const otherProjects = projects.slice(MAIN_COUNT);
+
+  const toggle = () => {
+    // When closing, scroll back to the top of the section so the page doesn't jump
+    if (showMore) {
+      document.getElementById("projects")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    setShowMore((v) => !v);
+  };
+
   return (
     <section id="projects" className="relative py-10">
       <div className="relative">
         <SectionHeading title="Projects" label="🚀 Things I built" />
+
+        {/* Main projects: full detail */}
         <div className="space-y-8">
-          {projects.map((project, i) => {
-            const isReversed = i % 2 === 1;
-            const isFeatured = i === 0;
-
-            // The screenshot opens the live demo if there is one, otherwise the first link
-            const liveLink = project.links.find((l) => linkKind(l.label) === "live");
-            const mainLink = liveLink ?? project.links[0];
-            const mainKind = mainLink ? linkKind(mainLink.label) : "code";
-            const tagText = mainKind === "live" ? "Open live demo" : mainKind === "design" ? "View design" : "View source";
-
-            return (
-              <article
-                key={project.title}
-                className={`card-hover group relative overflow-hidden rounded-3xl border bg-card shadow-card ${
-                  isFeatured ? "border-accent/40 shadow-pop ring-4 ring-tint" : "border-line-soft"
-                }`}
-              >
-                <div className={`relative flex flex-col ${isReversed ? "lg:flex-row-reverse" : "lg:flex-row"}`}>
-                  {/* Screenshot (clickable) */}
-                  <div className="relative flex items-center justify-center p-6 sm:p-8 lg:w-1/2">
-                    {(() => {
-                      const frame = (
-                        <div className="relative h-[200px] w-full overflow-hidden rounded-2xl border border-line-soft bg-soft shadow-pop sm:h-[250px]">
-                          {project.image ? (
-                            <Image
-                              src={project.image}
-                              alt={`${project.title} screenshot`}
-                              fill
-                              sizes="(max-width: 1024px) 100vw, 50vw"
-                              className="object-contain p-2 transition-transform duration-500 group-hover/shot:scale-[1.03]"
-                            />
-                          ) : (
-                            <ProjectScreenshot index={i} />
-                          )}
-                          {mainLink && (
-                            <span className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-card/95 px-3 py-1.5 font-sans text-[12px] font-semibold text-ink shadow-card transition-all duration-300 group-hover/shot:bg-accent group-hover/shot:text-surface">
-                              <KindIcon kind={mainKind} />
-                              {tagText} ↗
-                            </span>
-                          )}
-                        </div>
-                      );
-
-                      return mainLink ? (
-                        <a
-                          href={mainLink.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={`${tagText}: ${project.title}`}
-                          className="group/shot block w-full"
-                        >
-                          {frame}
-                        </a>
-                      ) : (
-                        frame
-                      );
-                    })()}
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex flex-col justify-center p-6 sm:p-8 lg:w-1/2">
-                    {isFeatured && (
-                      <span className="mb-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-[#ffdad8] px-3 py-1 font-sans text-[11px] font-bold uppercase tracking-wider text-[#8c1520]">
-                        ⭐ Featured Project
-                      </span>
-                    )}
-                    <h3 className="mb-3 font-sans text-2xl font-extrabold tracking-tight text-ink sm:text-[28px]">
-                      {project.title}
-                    </h3>
-                    <div className="mb-4 flex flex-wrap gap-2">
-                      {project.stack.map((tech) => (
-                        <span key={tech} className="tag-pill">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    <p className="mb-6 text-left text-[14.5px] leading-relaxed text-ink-muted">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-3">
-                      {project.links.map((link) => {
-                        const kind = linkKind(link.label);
-                        const isMain = link === mainLink;
-                        return (
-                          <a
-                            key={link.href + link.label}
-                            href={link.href}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`inline-flex items-center gap-2 rounded-full px-4 py-2 font-sans text-[13px] font-semibold transition-all duration-300 hover:-translate-y-0.5 ${
-                              isMain
-                                ? "bg-accent text-surface shadow-card hover:shadow-card-hover"
-                                : "border border-line bg-card text-ink hover:border-accent hover:text-accent"
-                            }`}
-                          >
-                            <KindIcon kind={kind} />
-                            {link.label} ↗
-                          </a>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
-              </article>
-            );
-          })}
+          {mainProjects.map((project, i) => (
+            <ProjectCard key={project.title} project={project} index={i} />
+          ))}
         </div>
+
+        {/* View more */}
+        {otherProjects.length > 0 && (
+          <div className="mt-10">
+            <div className="flex justify-center">
+              <button
+                type="button"
+                onClick={toggle}
+                aria-expanded={showMore}
+                aria-controls="more-projects"
+                className="inline-flex items-center gap-2 rounded-full border border-line bg-card px-6 py-3 font-sans text-[14px] font-semibold text-ink shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:border-accent hover:text-accent hover:shadow-card-hover"
+              >
+                {showMore ? "Show fewer projects" : `View more projects (${otherProjects.length})`}
+                <ChevronIcon up={showMore} />
+              </button>
+            </div>
+
+            {showMore && (
+              <div id="more-projects" className="mt-8">
+                <h3 className="mb-5 font-sans text-xl font-extrabold tracking-tight text-ink">
+                  More projects
+                </h3>
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {otherProjects.map((project) => (
+                    <CompactCard key={project.title} project={project} />
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </section>
   );
